@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>LOGIN PAGE</title>
 </head>
 <body>
 <h2>カスタム ログイン画面</h2>
-<form>
+<form th:action="@{/login}" method="post">
     <p>ユーザID</p>
     <input type="text" id="username" name="username"/>
     <p>パスワード</p>

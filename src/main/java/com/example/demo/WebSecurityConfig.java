@@ -6,16 +6,23 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    //ここに設定情報を定義していく
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                // 全てのリクエストに対して認証をかける
                 .authorizeRequests()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll();
+                    .anyRequest()
+                    .authenticated()
+                .and().formLogin()
+                    // ログインページを指定し、全ユーザにアクセスを許可する
+                    .loginPage("/login").permitAll()
+                    // Formの中のユーザ名とパスワードの値を指定する
+                    .usernameParameter("username").passwordParameter("password")
+                    // "/login"というパスに対してPOSTリクエストを投げる
+                    .loginProcessingUrl("/login")
+                    // ログイン成功時にアクセスするURLを指定する
+                    .defaultSuccessUrl("/");
     }
+
 }
