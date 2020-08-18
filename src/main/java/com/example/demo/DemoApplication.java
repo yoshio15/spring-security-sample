@@ -14,6 +14,9 @@ public class DemoApplication {
 		return "index";
 	}
 
+	@GetMapping("/login")
+	public String login() { return "login"; }
+
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
