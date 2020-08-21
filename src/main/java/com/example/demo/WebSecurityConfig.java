@@ -15,6 +15,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .anyRequest()
                     .authenticated()
                 .and().oauth2Login()
+                    .loginPage("/login")
                 .and().formLogin()
                     // ログインページを指定し、全ユーザにアクセスを許可する
                     .loginPage("/login").permitAll()
